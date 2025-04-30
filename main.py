@@ -5,8 +5,9 @@ from modules.convert import converter
 from modules.divider import process_audio_and_summarize
 from modules.ensubtitle import save_srt
 from modules.merger import merge_srt_files
+from modules.filemanage import delete_saved, delete_source #, transfer
 
-import os, whisper
+import os, whisper, time
 #---#
 
 model = whisper.load_model("small")
@@ -25,6 +26,20 @@ for i in range(num_chunks) :
     save_srt(chunks, f"{srt_path}/subtitles_{i}.srt")
     print(f"자막이 {i}번째 SRT 파일로 저장되었습니다.")
 
-file_names = [f"subtitles_{j}.srt" for j in range(num_chunks)]
+file_names = [f"save/srt/subtitles_{j}.srt" for j in range(num_chunks)]
 merge_srt_files(file_names, "save/srt/merged_subtitles.txt")
 
+#num_srt는 num_chunks + 1 (int)
+
+## AI processing & save summarized
+
+
+
+## delete or transfer
+
+key = int(input('0 : remove all files, 1 : remove saved files'))
+if key == 0 :
+    delete_saved(srt_path, chunks_path, audio_path, num_chunks)
+    delete_source(video_path)
+elif key == 1 :
+    delete_saved(srt_path, chunks_path, audio_path, num_chunks)

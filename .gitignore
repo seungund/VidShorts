@@ -1,5 +1,6 @@
 VidVenv
 __pycache__
+archive
 *.wav
 *.mp4
 *.DS_Store

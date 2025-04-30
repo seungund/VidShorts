@@ -1,7 +1,7 @@
 import whisper
 import time
 
-model = whisper.load_model("small")
+# model = whisper.load_model("small")
 
 # 자막을 SRT 형식으로 저장하는 함수 (반복문 외부로 이동)
 def save_srt(result, filename):

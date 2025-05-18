@@ -1,4 +1,4 @@
-# Source - Convert - divide - ensub - merge - AI - save - delete
+# Source - Convert - divide - ensub - merge - AI(GPT) - save - send(e-mail)- delete
 
 #---#
 from modules.convert import converter
@@ -6,8 +6,14 @@ from modules.divider import process_audio_and_summarize
 from modules.ensubtitle import save_srt
 from modules.merger import merge_srt_files
 from modules.filemanage import delete_saved, delete_source #, transfer
+from modules.ai_processing import processor, sum_save
 
-import os, whisper, time
+import os, whisper, time, dotenv
+#---#
+
+dotenv.load_dotenv()
+token = os.environ.get('TEST_API_TOKEN_GPT')
+
 #---#
 
 model = whisper.load_model("small")
@@ -33,8 +39,9 @@ merge_srt_files(file_names, "save/srt/merged_subtitles.txt")
 
 ## AI processing & save summarized
 
+# processor(token, "save/srt/merged_subtitles.txt")
 
-
+exit()
 ## delete or transfer
 
 key = int(input('0 : remove all files, 1 : remove saved files'))

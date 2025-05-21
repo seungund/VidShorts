@@ -39,10 +39,12 @@ merge_srt_files(file_names, "save/srt/merged_subtitles.txt")
 
 ## AI processing & save summarized
 
-# processor(token, "save/srt/merged_subtitles.txt")
+exit()
+
+response_text = processor(token, "save/srt/merged_subtitles.txt")
+sum_save()
 
 exit()
-## delete or transfer
 
 key = int(input('0 : remove all files, 1 : remove saved files'))
 if key == 0 :
